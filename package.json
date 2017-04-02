@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"es6-promise",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "es6-promise",
+    "description": "api documentation for [es6-promise (v4.1.0)](https://github.com/stefanpenner/es6-promise#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-es6-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-es6-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-es6-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-es6-promise)",
     "devDependencies": {
-        "es6-promise": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "es6-promise": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-es6-promise",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-es6-promise",
+    "keywords": [
+        "documentation",
+        "es6-promise"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_es6_promise.js",
+    "name": "npmdoc-es6-promise",
+    "nameAlias": "npmdoc_es6_promise",
+    "nameOriginal": "npmdoc-es6-promise",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-es6-promise.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
