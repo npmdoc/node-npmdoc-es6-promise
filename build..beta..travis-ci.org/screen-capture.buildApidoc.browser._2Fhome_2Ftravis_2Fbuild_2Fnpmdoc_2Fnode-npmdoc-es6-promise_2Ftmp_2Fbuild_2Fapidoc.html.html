@@ -1,0 +1,379 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/stefanpenner/es6-promise#readme">es6-promise (v4.1.0)</a>
+</h1>
+<h4>A lightweight library that provides tools for organizing asynchronous code</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.es6-promise">module es6-promise</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise">
+            function <span class="apidocSignatureSpan">es6-promise.</span>Promise
+            <span class="apidocSignatureSpan">(resolver)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise._asap">
+            function <span class="apidocSignatureSpan">es6-promise.</span>_asap
+            <span class="apidocSignatureSpan">(callback, arg)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise._setAsap">
+            function <span class="apidocSignatureSpan">es6-promise.</span>_setAsap
+            <span class="apidocSignatureSpan">(asapFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise._setScheduler">
+            function <span class="apidocSignatureSpan">es6-promise.</span>_setScheduler
+            <span class="apidocSignatureSpan">(scheduleFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.all">
+            function <span class="apidocSignatureSpan">es6-promise.</span>all
+            <span class="apidocSignatureSpan">(entries)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.polyfill">
+            function <span class="apidocSignatureSpan">es6-promise.</span>polyfill
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.race">
+            function <span class="apidocSignatureSpan">es6-promise.</span>race
+            <span class="apidocSignatureSpan">(entries)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.reject">
+            function <span class="apidocSignatureSpan">es6-promise.</span>reject
+            <span class="apidocSignatureSpan">(reason)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.resolve">
+            function <span class="apidocSignatureSpan">es6-promise.</span>resolve
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.es6-promise" id="apidoc.module.es6-promise">module es6-promise</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise" id="apidoc.element.es6-promise.Promise">
+        function <span class="apidocSignatureSpan">es6-promise.</span>Promise
+        <span class="apidocSignatureSpan">(resolver)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise(resolver) {
+  this[PROMISE_ID] = nextId();
+  this._result = this._state = undefined;
+  this._subscribers = [];
+
+  if (noop !== resolver) {
+    typeof resolver !== 'function' &amp;&amp; needsResolver();
+    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise._asap" id="apidoc.element.es6-promise._asap">
+        function <span class="apidocSignatureSpan">es6-promise.</span>_asap
+        <span class="apidocSignatureSpan">(callback, arg)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asap(callback, arg) {
+  queue[len] = callback;
+  queue[len + 1] = arg;
+  len += 2;
+  if (len === 2) {
+    // If len is 2, that means that we need to schedule an async flush.
+    // If additional callbacks are queued before the queue is flushed, they
+    // will be processed by this flush that we are scheduling.
+    if (customSchedulerFn) {
+      customSchedulerFn(flush);
+    } else {
+      scheduleFlush();
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise._setAsap" id="apidoc.element.es6-promise._setAsap">
+        function <span class="apidocSignatureSpan">es6-promise.</span>_setAsap
+        <span class="apidocSignatureSpan">(asapFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setAsap(asapFn) {
+  asap = asapFn;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise._setScheduler" id="apidoc.element.es6-promise._setScheduler">
+        function <span class="apidocSignatureSpan">es6-promise.</span>_setScheduler
+        <span class="apidocSignatureSpan">(scheduleFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setScheduler(scheduleFn) {
+  customSchedulerFn = scheduleFn;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.all" id="apidoc.element.es6-promise.all">
+        function <span class="apidocSignatureSpan">es6-promise.</span>all
+        <span class="apidocSignatureSpan">(entries)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function all(entries) {
+  return new Enumerator(this, entries).promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.polyfill" id="apidoc.element.es6-promise.polyfill">
+        function <span class="apidocSignatureSpan">es6-promise.</span>polyfill
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function polyfill() {
+    var local = undefined;
+
+    if (typeof global !== 'undefined') {
+        local = global;
+    } else if (typeof self !== 'undefined') {
+        local = self;
+    } else {
+        try {
+            local = Function('return this')();
+        } catch (e) {
+            throw new Error('polyfill failed because global object is unavailable in this environment');
+        }
+    }
+
+    var P = local.Promise;
+
+    if (P) {
+        var promiseToString = null;
+        try {
+            promiseToString = Object.prototype.toString.call(P.resolve());
+        } catch (e) {
+            // silently ignored
+        }
+
+        if (promiseToString === '[object Promise]' &amp;&amp; !P.cast) {
+            return;
+        }
+    }
+
+    local.Promise = Promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Auto-polyfill
+
+To polyfill the global environment (either in Node or in the browser via CommonJS) use the following code snippet:
+
+```js
+require('es6-promise').<span class="apidocCodeKeywordSpan">polyfill</span>();
+```
+
+Alternatively
+
+```js
+require('es6-promise/auto');
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.race" id="apidoc.element.es6-promise.race">
+        function <span class="apidocSignatureSpan">es6-promise.</span>race
+        <span class="apidocSignatureSpan">(entries)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function race(entries) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+
+  if (!isArray(entries)) {
+    return new Constructor(function (_, reject) {
+      return reject(new TypeError('You must pass an array to race.'));
+    });
+  } else {
+    return new Constructor(function (resolve, reject) {
+      var length = entries.length;
+      for (var i = 0; i &lt; length; i++) {
+        Constructor.resolve(entries[i]).then(resolve, reject);
+      }
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.reject" id="apidoc.element.es6-promise.reject">
+        function <span class="apidocSignatureSpan">es6-promise.</span>reject
+        <span class="apidocSignatureSpan">(reason)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reject(reason) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+  var promise = new Constructor(noop);
+  _reject(promise, reason);
+  return promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.resolve" id="apidoc.element.es6-promise.resolve">
+        function <span class="apidocSignatureSpan">es6-promise.</span>resolve
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function resolve(object) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+
+  if (object &amp;&amp; typeof object === 'object' &amp;&amp; object.constructor === Constructor) {
+    return object;
+  }
+
+  var promise = new Constructor(noop);
+  _resolve(promise, object);
+  return promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
