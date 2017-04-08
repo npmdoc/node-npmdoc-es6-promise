@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/es6-promise.png?downloads=true)](https://www.npmjs.com/package/es6-promise)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-es6-promise%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-es6-promise%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.npmPackageListing.svg)
 
