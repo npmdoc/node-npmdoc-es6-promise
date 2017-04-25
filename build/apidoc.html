@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.es6-promise">
+            function <span class="apidocSignatureSpan"></span>es6-promise
+            <span class="apidocSignatureSpan">(resolver)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise">
             function <span class="apidocSignatureSpan">es6-promise.</span>Promise
             <span class="apidocSignatureSpan">(resolver)</span>
@@ -142,12 +151,156 @@
 
         </li>
 
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">es6-promise.</span>Promise.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.es6-promise.Promise">module es6-promise.Promise</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.Promise">
+            function <span class="apidocSignatureSpan">es6-promise.</span>Promise
+            <span class="apidocSignatureSpan">(resolver)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise._asap">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_asap
+            <span class="apidocSignatureSpan">(callback, arg)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise._setAsap">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_setAsap
+            <span class="apidocSignatureSpan">(asapFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise._setScheduler">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_setScheduler
+            <span class="apidocSignatureSpan">(scheduleFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.all">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>all
+            <span class="apidocSignatureSpan">(entries)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.polyfill">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>polyfill
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.race">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>race
+            <span class="apidocSignatureSpan">(entries)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.reject">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>reject
+            <span class="apidocSignatureSpan">(reason)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.resolve">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.</span>resolve
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.es6-promise.Promise.prototype">module es6-promise.Promise.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.prototype.catch">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>catch
+            <span class="apidocSignatureSpan">(onRejection)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.prototype.constructor">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(resolver)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.es6-promise.Promise.prototype.then">
+            function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>then
+            <span class="apidocSignatureSpan">(onFulfillment, onRejection)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.es6-promise" id="apidoc.module.es6-promise">module es6-promise</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.es6-promise" id="apidoc.element.es6-promise.es6-promise">
+        function <span class="apidocSignatureSpan"></span>es6-promise
+        <span class="apidocSignatureSpan">(resolver)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise(resolver) {
+  this[PROMISE_ID] = nextId();
+  this._result = this._state = undefined;
+  this._subscribers = [];
+
+  if (noop !== resolver) {
+    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -224,7 +377,23 @@
     <li>description and source-code<pre class="apidocCodePre">function setScheduler(scheduleFn) {
   customSchedulerFn = scheduleFn;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  nodes are not affected as they were already using nextTick(). Note that using nextTick() might
+  trigger a depreciation warning on 0.10 as described at https://github.com/cujojs/when/issues/410.
+  The reason why nextTick() is preferred is that is setImmediate() would schedule a macrotask
+  instead of a microtask and might result in a different scheduling.
+  If needed you can revert to the former behavior as follow:
+
+    var Promise = require(&#x27;es6-promise&#x27;).Promise;
+    Promise.<span class="apidocCodeKeywordSpan">_setScheduler</span>(setImmediate);
+
+# 2.3.0
+
+* #121: Ability to override the internal asap implementation
+* #120: Use an ascii character for an apostrophe, for source maps
+
+# 2.2.0
+...</pre></li>
     </ul>
 
 
@@ -239,7 +408,23 @@
     <li>description and source-code<pre class="apidocCodePre">function all(entries) {
   return new Enumerator(this, entries).promise;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+let promise1 = resolve(1);
+let promise2 = resolve(2);
+let promise3 = resolve(3);
+let promises = [ promise1, promise2, promise3 ];
+
+Promise.<span class="apidocCodeKeywordSpan">all</span>(promises).then(function(array){
+  // The array here would be [ 1, 2, 3 ];
+});
+```
+
+If any of the `promises` given to `all` are rejected, the first promise
+that is rejected will be given as an argument to the returned promises&#x27;s
+rejection handler. For example:
+...</pre></li>
     </ul>
 
 
@@ -284,21 +469,14 @@
     local.Promise = Promise;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-```
 
-## Auto-polyfill
 
-To polyfill the global environment (either in Node or in the browser via CommonJS) use the following code snippet:
 
-```js
-require(&#x27;es6-promise&#x27;).<span class="apidocCodeKeywordSpan">polyfill</span>();
-```
 
-Alternatively
-
-```js
-require(&#x27;es6-promise/auto&#x27;);
-```
+// This file can be required in Browserify and Node.js for automatic polyfill
+// To use it:  require(&#x27;es6-promise/auto&#x27;);
+&#x27;use strict&#x27;;
+module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">polyfill</span>();
 ...</pre></li>
     </ul>
 
@@ -328,7 +506,23 @@ require(&#x27;es6-promise/auto&#x27;);
     });
   }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+let promise2 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    resolve(&#x27;promise 2&#x27;);
+  }, 100);
+});
+
+Promise.<span class="apidocCodeKeywordSpan">race</span>([promise1, promise2]).then(function(result){
+  // result === &#x27;promise 2&#x27; because it was resolved before promise1
+  // was resolved.
+});
+```
+
+`Promise.race` is deterministic in that only the state of the first
+settled promise matters. For example, even if other promises given to the
+...</pre></li>
     </ul>
 
 
@@ -347,7 +541,23 @@ require(&#x27;es6-promise/auto&#x27;);
   _reject(promise, reason);
   return promise;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // reason.message === &#x27;WHOOPS&#x27;
+});
+```
+
+Instead of writing the above, your code now simply becomes the following:
+
+```javascript
+let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error(&#x27;WHOOPS&#x27;));
+
+promise.then(function(value){
+  // Code here doesn&#x27;t run because the promise is rejected!
+}, function(reason){
+  // reason.message === &#x27;WHOOPS&#x27;
+});
+```
+...</pre></li>
     </ul>
 
 
@@ -371,7 +581,460 @@ require(&#x27;es6-promise/auto&#x27;);
   _resolve(promise, object);
   return promise;
 }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // value === 1
+});
+```
+
+Instead of writing the above, your code now simply becomes the following:
+
+```javascript
+let promise = Promise.<span class="apidocCodeKeywordSpan">resolve</span>(1);
+
+promise.then(function(value){
+  // value === 1
+});
+```
+
+@method resolve
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.es6-promise.Promise" id="apidoc.module.es6-promise.Promise">module es6-promise.Promise</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.Promise" id="apidoc.element.es6-promise.Promise.Promise">
+        function <span class="apidocSignatureSpan">es6-promise.</span>Promise
+        <span class="apidocSignatureSpan">(resolver)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise(resolver) {
+  this[PROMISE_ID] = nextId();
+  this._result = this._state = undefined;
+  this._subscribers = [];
+
+  if (noop !== resolver) {
+    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+  }
+}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise._asap" id="apidoc.element.es6-promise.Promise._asap">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_asap
+        <span class="apidocSignatureSpan">(callback, arg)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asap(callback, arg) {
+  queue[len] = callback;
+  queue[len + 1] = arg;
+  len += 2;
+  if (len === 2) {
+    // If len is 2, that means that we need to schedule an async flush.
+    // If additional callbacks are queued before the queue is flushed, they
+    // will be processed by this flush that we are scheduling.
+    if (customSchedulerFn) {
+      customSchedulerFn(flush);
+    } else {
+      scheduleFlush();
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise._setAsap" id="apidoc.element.es6-promise.Promise._setAsap">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_setAsap
+        <span class="apidocSignatureSpan">(asapFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setAsap(asapFn) {
+  asap = asapFn;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise._setScheduler" id="apidoc.element.es6-promise.Promise._setScheduler">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>_setScheduler
+        <span class="apidocSignatureSpan">(scheduleFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function setScheduler(scheduleFn) {
+  customSchedulerFn = scheduleFn;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  nodes are not affected as they were already using nextTick(). Note that using nextTick() might
+  trigger a depreciation warning on 0.10 as described at https://github.com/cujojs/when/issues/410.
+  The reason why nextTick() is preferred is that is setImmediate() would schedule a macrotask
+  instead of a microtask and might result in a different scheduling.
+  If needed you can revert to the former behavior as follow:
+
+    var Promise = require(&#x27;es6-promise&#x27;).Promise;
+    Promise.<span class="apidocCodeKeywordSpan">_setScheduler</span>(setImmediate);
+
+# 2.3.0
+
+* #121: Ability to override the internal asap implementation
+* #120: Use an ascii character for an apostrophe, for source maps
+
+# 2.2.0
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.all" id="apidoc.element.es6-promise.Promise.all">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>all
+        <span class="apidocSignatureSpan">(entries)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function all(entries) {
+  return new Enumerator(this, entries).promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+let promise1 = resolve(1);
+let promise2 = resolve(2);
+let promise3 = resolve(3);
+let promises = [ promise1, promise2, promise3 ];
+
+Promise.<span class="apidocCodeKeywordSpan">all</span>(promises).then(function(array){
+  // The array here would be [ 1, 2, 3 ];
+});
+```
+
+If any of the `promises` given to `all` are rejected, the first promise
+that is rejected will be given as an argument to the returned promises&#x27;s
+rejection handler. For example:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.polyfill" id="apidoc.element.es6-promise.Promise.polyfill">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>polyfill
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function polyfill() {
+    var local = undefined;
+
+    if (typeof global !== &#x27;undefined&#x27;) {
+        local = global;
+    } else if (typeof self !== &#x27;undefined&#x27;) {
+        local = self;
+    } else {
+        try {
+            local = Function(&#x27;return this&#x27;)();
+        } catch (e) {
+            throw new Error(&#x27;polyfill failed because global object is unavailable in this environment&#x27;);
+        }
+    }
+
+    var P = local.Promise;
+
+    if (P) {
+        var promiseToString = null;
+        try {
+            promiseToString = Object.prototype.toString.call(P.resolve());
+        } catch (e) {
+            // silently ignored
+        }
+
+        if (promiseToString === &#x27;[object Promise]&#x27; &#x26;&#x26; !P.cast) {
+            return;
+        }
+    }
+
+    local.Promise = Promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+
+
+// This file can be required in Browserify and Node.js for automatic polyfill
+// To use it:  require(&#x27;es6-promise/auto&#x27;);
+&#x27;use strict&#x27;;
+module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">polyfill</span>();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.race" id="apidoc.element.es6-promise.Promise.race">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>race
+        <span class="apidocSignatureSpan">(entries)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function race(entries) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+
+  if (!isArray(entries)) {
+    return new Constructor(function (_, reject) {
+      return reject(new TypeError(&#x27;You must pass an array to race.&#x27;));
+    });
+  } else {
+    return new Constructor(function (resolve, reject) {
+      var length = entries.length;
+      for (var i = 0; i &#x3c; length; i++) {
+        Constructor.resolve(entries[i]).then(resolve, reject);
+      }
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+let promise2 = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    resolve(&#x27;promise 2&#x27;);
+  }, 100);
+});
+
+Promise.<span class="apidocCodeKeywordSpan">race</span>([promise1, promise2]).then(function(result){
+  // result === &#x27;promise 2&#x27; because it was resolved before promise1
+  // was resolved.
+});
+```
+
+`Promise.race` is deterministic in that only the state of the first
+settled promise matters. For example, even if other promises given to the
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.reject" id="apidoc.element.es6-promise.Promise.reject">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>reject
+        <span class="apidocSignatureSpan">(reason)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reject(reason) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+  var promise = new Constructor(noop);
+  _reject(promise, reason);
+  return promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // reason.message === &#x27;WHOOPS&#x27;
+});
+```
+
+Instead of writing the above, your code now simply becomes the following:
+
+```javascript
+let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error(&#x27;WHOOPS&#x27;));
+
+promise.then(function(value){
+  // Code here doesn&#x27;t run because the promise is rejected!
+}, function(reason){
+  // reason.message === &#x27;WHOOPS&#x27;
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.resolve" id="apidoc.element.es6-promise.Promise.resolve">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.</span>resolve
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function resolve(object) {
+<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
+</span>  var Constructor = this;
+
+  if (object &#x26;&#x26; typeof object === &#x27;object&#x27; &#x26;&#x26; object.constructor === Constructor) {
+    return object;
+  }
+
+  var promise = new Constructor(noop);
+  _resolve(promise, object);
+  return promise;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // value === 1
+});
+```
+
+Instead of writing the above, your code now simply becomes the following:
+
+```javascript
+let promise = Promise.<span class="apidocCodeKeywordSpan">resolve</span>(1);
+
+promise.then(function(value){
+  // value === 1
+});
+```
+
+@method resolve
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.es6-promise.Promise.prototype" id="apidoc.module.es6-promise.Promise.prototype">module es6-promise.Promise.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.prototype.catch" id="apidoc.element.es6-promise.Promise.prototype.catch">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>catch
+        <span class="apidocSignatureSpan">(onRejection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function _catch(onRejection) {
+  return this.then(null, onRejection);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```sh
+bower install es6-promise --save
+```
+
+
+## Usage in IE&#x3c;9
+
+`catch` is a reserved word in IE&#x3c;9, meaning `promise.<span class="apidocCodeKeywordSpan">catch</span>(func)` throws a syntax
+ error. To work around this, you can use a string to access the property as shown in the following example.
+
+However, please remember that such technique is already provided by most common minifiers, making the resulting code safe for old
+ browsers and production:
+
+```js
+promise[&#x27;catch&#x27;](function(err) {
+  // ...
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.prototype.constructor" id="apidoc.element.es6-promise.Promise.prototype.constructor">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(resolver)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Promise(resolver) {
+  this[PROMISE_ID] = nextId();
+  this._result = this._state = undefined;
+  this._subscribers = [];
+
+  if (noop !== resolver) {
+    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function then(onFulfillment, onRejection) {
+var _arguments = arguments;
+
+var parent = this;
+
+var child = new this.<span class="apidocCodeKeywordSpan">constructor</span>(noop);
+
+if (child[PROMISE_ID] === undefined) {
+  makePromise(child);
+}
+
+var _state = parent._state;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.es6-promise.Promise.prototype.then" id="apidoc.element.es6-promise.Promise.prototype.then">
+        function <span class="apidocSignatureSpan">es6-promise.Promise.prototype.</span>then
+        <span class="apidocSignatureSpan">(onFulfillment, onRejection)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function then(onFulfillment, onRejection) {
+  var _arguments = arguments;
+
+  var parent = this;
+
+  var child = new this.constructor(noop);
+
+  if (child[PROMISE_ID] === undefined) {
+    makePromise(child);
+  }
+
+  var _state = parent._state;
+
+  if (_state) {
+    (function () {
+      var callback = _arguments[_state - 1];
+      asap(function () {
+        return invokeCallback(_state, child, callback, parent._result);
+      });
+    })();
+  } else {
+    subscribe(parent, child, onFulfillment, onRejection);
+  }
+
+  return child;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param onFulfilled called when/if &#x22;promise&#x22; resolves
+ * @param onRejected called when/if &#x22;promise&#x22; rejects
+ */
+then &#x3c;U&#x3e; (onFulfilled?: (value: R) =&#x3e; U | Thenable&#x3c;U&#x3e;, onRejected?: (error: any) =&#x3e; U | Thenable&#
+x3c;U&#x3e;): Promise&#x3c;U&#x3e;;
+then &#x3c;U&#x3e; (onFulfilled?: (value: R) =&#x3e; U | Thenable&#x3c;U&#x3e;, onRejected?: (error: any) =&#x3e; void): Promise
+&#x3c;U&#x3e;;
+
+/**
+ * Sugar for promise.<span class="apidocCodeKeywordSpan">then</span>(undefined, onRejected)
+ *
+ * @param onRejected called when/if &#x22;promise&#x22; rejects
+ */
+catch &#x3c;U&#x3e; (onRejected?: (error: any) =&#x3e; U | Thenable&#x3c;U&#x3e;): Promise&#x3c;U&#x3e;;
+
+/**
+ * Make a new promise from the thenable.
+...</pre></li>
     </ul>
 
 

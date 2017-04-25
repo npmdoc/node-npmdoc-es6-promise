@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/stefanpenner/es6-promise#readme"
-
-    >es6-promise (v4.1.0)</a>
+    <a href="https://github.com/stefanpenner/es6-promise#readme">es6-promise (v4.1.0)</a>
 </h1>
 <h4>A lightweight library that provides tools for organizing asynchronous code</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.es6-promise">module es6-promise</a><ol>
 
@@ -294,7 +287,7 @@
   this._subscribers = [];
 
   if (noop !== resolver) {
-    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    typeof resolver !== 'function' &amp;&amp; needsResolver();
     this instanceof Promise ? initializePromise(this, resolver) : needsNew();
   }
 }</pre></li>
@@ -316,7 +309,7 @@
   this._subscribers = [];
 
   if (noop !== resolver) {
-    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    typeof resolver !== 'function' &amp;&amp; needsResolver();
     this instanceof Promise ? initializePromise(this, resolver) : needsNew();
   }
 }</pre></li>
@@ -384,7 +377,7 @@
   instead of a microtask and might result in a different scheduling.
   If needed you can revert to the former behavior as follow:
 
-    var Promise = require(&#x27;es6-promise&#x27;).Promise;
+    var Promise = require('es6-promise').Promise;
     Promise.<span class="apidocCodeKeywordSpan">_setScheduler</span>(setImmediate);
 
 # 2.3.0
@@ -422,7 +415,7 @@ Promise.<span class="apidocCodeKeywordSpan">all</span>(promises).then(function(a
 ```
 
 If any of the `promises` given to `all` are rejected, the first promise
-that is rejected will be given as an argument to the returned promises&#x27;s
+that is rejected will be given as an argument to the returned promises's
 rejection handler. For example:
 ...</pre></li>
     </ul>
@@ -439,15 +432,15 @@ rejection handler. For example:
     <li>description and source-code<pre class="apidocCodePre">function polyfill() {
     var local = undefined;
 
-    if (typeof global !== &#x27;undefined&#x27;) {
+    if (typeof global !== 'undefined') {
         local = global;
-    } else if (typeof self !== &#x27;undefined&#x27;) {
+    } else if (typeof self !== 'undefined') {
         local = self;
     } else {
         try {
-            local = Function(&#x27;return this&#x27;)();
+            local = Function('return this')();
         } catch (e) {
-            throw new Error(&#x27;polyfill failed because global object is unavailable in this environment&#x27;);
+            throw new Error('polyfill failed because global object is unavailable in this environment');
         }
     }
 
@@ -461,7 +454,7 @@ rejection handler. For example:
             // silently ignored
         }
 
-        if (promiseToString === &#x27;[object Promise]&#x27; &#x26;&#x26; !P.cast) {
+        if (promiseToString === '[object Promise]' &amp;&amp; !P.cast) {
             return;
         }
     }
@@ -474,9 +467,9 @@ rejection handler. For example:
 
 
 // This file can be required in Browserify and Node.js for automatic polyfill
-// To use it:  require(&#x27;es6-promise/auto&#x27;);
-&#x27;use strict&#x27;;
-module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">polyfill</span>();
+// To use it:  require('es6-promise/auto');
+'use strict';
+module.exports = require('./').<span class="apidocCodeKeywordSpan">polyfill</span>();
 ...</pre></li>
     </ul>
 
@@ -495,12 +488,12 @@ module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">pol
 
   if (!isArray(entries)) {
     return new Constructor(function (_, reject) {
-      return reject(new TypeError(&#x27;You must pass an array to race.&#x27;));
+      return reject(new TypeError('You must pass an array to race.'));
     });
   } else {
     return new Constructor(function (resolve, reject) {
       var length = entries.length;
-      for (var i = 0; i &#x3c; length; i++) {
+      for (var i = 0; i &lt; length; i++) {
         Constructor.resolve(entries[i]).then(resolve, reject);
       }
     });
@@ -510,12 +503,12 @@ module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">pol
 
 let promise2 = new Promise(function(resolve, reject){
   setTimeout(function(){
-    resolve(&#x27;promise 2&#x27;);
+    resolve('promise 2');
   }, 100);
 });
 
 Promise.<span class="apidocCodeKeywordSpan">race</span>([promise1, promise2]).then(function(result){
-  // result === &#x27;promise 2&#x27; because it was resolved before promise1
+  // result === 'promise 2' because it was resolved before promise1
   // was resolved.
 });
 ```
@@ -542,19 +535,19 @@ settled promise matters. For example, even if other promises given to the
   return promise;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // reason.message === &#x27;WHOOPS&#x27;
+  // reason.message === 'WHOOPS'
 });
 ```
 
 Instead of writing the above, your code now simply becomes the following:
 
 ```javascript
-let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error(&#x27;WHOOPS&#x27;));
+let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error('WHOOPS'));
 
 promise.then(function(value){
-  // Code here doesn&#x27;t run because the promise is rejected!
+  // Code here doesn't run because the promise is rejected!
 }, function(reason){
-  // reason.message === &#x27;WHOOPS&#x27;
+  // reason.message === 'WHOOPS'
 });
 ```
 ...</pre></li>
@@ -573,7 +566,7 @@ promise.then(function(value){
 <span class="apidocCodeCommentSpan">  /*jshint validthis:true */
 </span>  var Constructor = this;
 
-  if (object &#x26;&#x26; typeof object === &#x27;object&#x27; &#x26;&#x26; object.constructor === Constructor) {
+  if (object &amp;&amp; typeof object === 'object' &amp;&amp; object.constructor === Constructor) {
     return object;
   }
 
@@ -622,7 +615,7 @@ promise.then(function(value){
   this._subscribers = [];
 
   if (noop !== resolver) {
-    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    typeof resolver !== 'function' &amp;&amp; needsResolver();
     this instanceof Promise ? initializePromise(this, resolver) : needsNew();
   }
 }</pre></li>
@@ -690,7 +683,7 @@ promise.then(function(value){
   instead of a microtask and might result in a different scheduling.
   If needed you can revert to the former behavior as follow:
 
-    var Promise = require(&#x27;es6-promise&#x27;).Promise;
+    var Promise = require('es6-promise').Promise;
     Promise.<span class="apidocCodeKeywordSpan">_setScheduler</span>(setImmediate);
 
 # 2.3.0
@@ -728,7 +721,7 @@ Promise.<span class="apidocCodeKeywordSpan">all</span>(promises).then(function(a
 ```
 
 If any of the `promises` given to `all` are rejected, the first promise
-that is rejected will be given as an argument to the returned promises&#x27;s
+that is rejected will be given as an argument to the returned promises's
 rejection handler. For example:
 ...</pre></li>
     </ul>
@@ -745,15 +738,15 @@ rejection handler. For example:
     <li>description and source-code<pre class="apidocCodePre">function polyfill() {
     var local = undefined;
 
-    if (typeof global !== &#x27;undefined&#x27;) {
+    if (typeof global !== 'undefined') {
         local = global;
-    } else if (typeof self !== &#x27;undefined&#x27;) {
+    } else if (typeof self !== 'undefined') {
         local = self;
     } else {
         try {
-            local = Function(&#x27;return this&#x27;)();
+            local = Function('return this')();
         } catch (e) {
-            throw new Error(&#x27;polyfill failed because global object is unavailable in this environment&#x27;);
+            throw new Error('polyfill failed because global object is unavailable in this environment');
         }
     }
 
@@ -767,7 +760,7 @@ rejection handler. For example:
             // silently ignored
         }
 
-        if (promiseToString === &#x27;[object Promise]&#x27; &#x26;&#x26; !P.cast) {
+        if (promiseToString === '[object Promise]' &amp;&amp; !P.cast) {
             return;
         }
     }
@@ -780,9 +773,9 @@ rejection handler. For example:
 
 
 // This file can be required in Browserify and Node.js for automatic polyfill
-// To use it:  require(&#x27;es6-promise/auto&#x27;);
-&#x27;use strict&#x27;;
-module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">polyfill</span>();
+// To use it:  require('es6-promise/auto');
+'use strict';
+module.exports = require('./').<span class="apidocCodeKeywordSpan">polyfill</span>();
 ...</pre></li>
     </ul>
 
@@ -801,12 +794,12 @@ module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">pol
 
   if (!isArray(entries)) {
     return new Constructor(function (_, reject) {
-      return reject(new TypeError(&#x27;You must pass an array to race.&#x27;));
+      return reject(new TypeError('You must pass an array to race.'));
     });
   } else {
     return new Constructor(function (resolve, reject) {
       var length = entries.length;
-      for (var i = 0; i &#x3c; length; i++) {
+      for (var i = 0; i &lt; length; i++) {
         Constructor.resolve(entries[i]).then(resolve, reject);
       }
     });
@@ -816,12 +809,12 @@ module.exports = require(&#x27;./&#x27;).<span class="apidocCodeKeywordSpan">pol
 
 let promise2 = new Promise(function(resolve, reject){
   setTimeout(function(){
-    resolve(&#x27;promise 2&#x27;);
+    resolve('promise 2');
   }, 100);
 });
 
 Promise.<span class="apidocCodeKeywordSpan">race</span>([promise1, promise2]).then(function(result){
-  // result === &#x27;promise 2&#x27; because it was resolved before promise1
+  // result === 'promise 2' because it was resolved before promise1
   // was resolved.
 });
 ```
@@ -848,19 +841,19 @@ settled promise matters. For example, even if other promises given to the
   return promise;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // reason.message === &#x27;WHOOPS&#x27;
+  // reason.message === 'WHOOPS'
 });
 ```
 
 Instead of writing the above, your code now simply becomes the following:
 
 ```javascript
-let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error(&#x27;WHOOPS&#x27;));
+let promise = Promise.<span class="apidocCodeKeywordSpan">reject</span>(new Error('WHOOPS'));
 
 promise.then(function(value){
-  // Code here doesn&#x27;t run because the promise is rejected!
+  // Code here doesn't run because the promise is rejected!
 }, function(reason){
-  // reason.message === &#x27;WHOOPS&#x27;
+  // reason.message === 'WHOOPS'
 });
 ```
 ...</pre></li>
@@ -879,7 +872,7 @@ promise.then(function(value){
 <span class="apidocCodeCommentSpan">  /*jshint validthis:true */
 </span>  var Constructor = this;
 
-  if (object &#x26;&#x26; typeof object === &#x27;object&#x27; &#x26;&#x26; object.constructor === Constructor) {
+  if (object &amp;&amp; typeof object === 'object' &amp;&amp; object.constructor === Constructor) {
     return object;
   }
 
@@ -929,16 +922,16 @@ bower install es6-promise --save
 ```
 
 
-## Usage in IE&#x3c;9
+## Usage in IE&lt;9
 
-`catch` is a reserved word in IE&#x3c;9, meaning `promise.<span class="apidocCodeKeywordSpan">catch</span>(func)` throws a syntax
+`catch` is a reserved word in IE&lt;9, meaning `promise.<span class="apidocCodeKeywordSpan">catch</span>(func)` throws a syntax
  error. To work around this, you can use a string to access the property as shown in the following example.
 
 However, please remember that such technique is already provided by most common minifiers, making the resulting code safe for old
  browsers and production:
 
 ```js
-promise[&#x27;catch&#x27;](function(err) {
+promise['catch'](function(err) {
   // ...
 });
 ...</pre></li>
@@ -959,7 +952,7 @@ promise[&#x27;catch&#x27;](function(err) {
   this._subscribers = [];
 
   if (noop !== resolver) {
-    typeof resolver !== &#x27;function&#x27; &#x26;&#x26; needsResolver();
+    typeof resolver !== 'function' &amp;&amp; needsResolver();
     this instanceof Promise ? initializePromise(this, resolver) : needsNew();
   }
 }</pre></li>
@@ -1017,20 +1010,20 @@ var _state = parent._state;
   return child;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
- * @param onFulfilled called when/if &#x22;promise&#x22; resolves
- * @param onRejected called when/if &#x22;promise&#x22; rejects
+ * @param onFulfilled called when/if "promise" resolves
+ * @param onRejected called when/if "promise" rejects
  */
-then &#x3c;U&#x3e; (onFulfilled?: (value: R) =&#x3e; U | Thenable&#x3c;U&#x3e;, onRejected?: (error: any) =&#x3e; U | Thenable&#
-x3c;U&#x3e;): Promise&#x3c;U&#x3e;;
-then &#x3c;U&#x3e; (onFulfilled?: (value: R) =&#x3e; U | Thenable&#x3c;U&#x3e;, onRejected?: (error: any) =&#x3e; void): Promise
-&#x3c;U&#x3e;;
+then &lt;U&gt; (onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; U | Thenable&amp;#
+x3c;U&gt;): Promise&lt;U&gt;;
+then &lt;U&gt; (onFulfilled?: (value: R) =&gt; U | Thenable&lt;U&gt;, onRejected?: (error: any) =&gt; void): Promise
+&lt;U&gt;;
 
 /**
  * Sugar for promise.<span class="apidocCodeKeywordSpan">then</span>(undefined, onRejected)
  *
- * @param onRejected called when/if &#x22;promise&#x22; rejects
+ * @param onRejected called when/if "promise" rejects
  */
-catch &#x3c;U&#x3e; (onRejected?: (error: any) =&#x3e; U | Thenable&#x3c;U&#x3e;): Promise&#x3c;U&#x3e;;
+catch &lt;U&gt; (onRejected?: (error: any) =&gt; U | Thenable&lt;U&gt;): Promise&lt;U&gt;;
 
 /**
  * Make a new promise from the thenable.
@@ -1046,3 +1039,4 @@ catch &#x3c;U&#x3e; (onRejected?: (error: any) =&#x3e; U | Thenable&#x3c;U&#x3e;
     ]
 </div>
 </div>
+</body></html>
