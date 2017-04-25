@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "es6-promise",
-    "description": "api documentation for [es6-promise (v4.1.0)](https://github.com/stefanpenner/es6-promise#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-es6-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-es6-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-es6-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-es6-promise)",
+    "description": "#### basic api documentation for  [es6-promise (v4.1.0)](https://github.com/stefanpenner/es6-promise#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-es6-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-es6-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-es6-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-es6-promise)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "es6-promise": "*",
@@ -36,5 +36,5 @@
         "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
         "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
-    "version": "0.0.3"
+    "version": "2017.4.25"
 }

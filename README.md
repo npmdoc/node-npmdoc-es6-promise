@@ -1,9 +1,14 @@
-# api documentation for  [es6-promise (v4.1.0)](https://github.com/stefanpenner/es6-promise#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-es6-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-es6-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-es6-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-es6-promise)
+# npmdoc-es6-promise
+
+#### basic api documentation for  [es6-promise (v4.1.0)](https://github.com/stefanpenner/es6-promise#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-es6-promise.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-es6-promise) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-es6-promise.svg)](https://travis-ci.org/npmdoc/node-npmdoc-es6-promise)
+
 #### A lightweight library that provides tools for organizing asynchronous code
 
-[![NPM](https://nodei.co/npm/es6-promise.png?downloads=true)](https://www.npmjs.com/package/es6-promise)
+[![NPM](https://nodei.co/npm/es6-promise.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/es6-promise)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-es6-promise%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-es6-promise/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-es6-promise/build/screenCapture.npmPackageListing.svg)
 
@@ -69,18 +74,15 @@
     "main": "dist/es6-promise.js",
     "maintainers": [
         {
-            "name": "jaffathecake",
-            "email": "jaffathecake@gmail.com"
+            "name": "jaffathecake"
         },
         {
-            "name": "stefanpenner",
-            "email": "stefan.penner@gmail.com"
+            "name": "stefanpenner"
         }
     ],
     "name": "es6-promise",
     "namespace": "es6-promise",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/stefanpenner/es6-promise.git"
@@ -100,226 +102,9 @@
         "main": "dist/es6-promise.js"
     },
     "typings": "es6-promise.d.ts",
-    "version": "4.1.0"
+    "version": "4.1.0",
+    "bin": {}
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module es6-promise](#apidoc.module.es6-promise)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>Promise (resolver)](#apidoc.element.es6-promise.Promise)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>_asap (callback, arg)](#apidoc.element.es6-promise._asap)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>_setAsap (asapFn)](#apidoc.element.es6-promise._setAsap)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>_setScheduler (scheduleFn)](#apidoc.element.es6-promise._setScheduler)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>all (entries)](#apidoc.element.es6-promise.all)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>polyfill ()](#apidoc.element.es6-promise.polyfill)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>race (entries)](#apidoc.element.es6-promise.race)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>reject (reason)](#apidoc.element.es6-promise.reject)
-1.  [function <span class="apidocSignatureSpan">es6-promise.</span>resolve (object)](#apidoc.element.es6-promise.resolve)
-
-
-
-# <a name="apidoc.module.es6-promise"></a>[module es6-promise](#apidoc.module.es6-promise)
-
-#### <a name="apidoc.element.es6-promise.Promise"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>Promise (resolver)](#apidoc.element.es6-promise.Promise)
-- description and source-code
-```javascript
-function Promise(resolver) {
-  this[PROMISE_ID] = nextId();
-  this._result = this._state = undefined;
-  this._subscribers = [];
-
-  if (noop !== resolver) {
-    typeof resolver !== 'function' && needsResolver();
-    this instanceof Promise ? initializePromise(this, resolver) : needsNew();
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise._asap"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>_asap (callback, arg)](#apidoc.element.es6-promise._asap)
-- description and source-code
-```javascript
-function asap(callback, arg) {
-  queue[len] = callback;
-  queue[len + 1] = arg;
-  len += 2;
-  if (len === 2) {
-    // If len is 2, that means that we need to schedule an async flush.
-    // If additional callbacks are queued before the queue is flushed, they
-    // will be processed by this flush that we are scheduling.
-    if (customSchedulerFn) {
-      customSchedulerFn(flush);
-    } else {
-      scheduleFlush();
-    }
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise._setAsap"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>_setAsap (asapFn)](#apidoc.element.es6-promise._setAsap)
-- description and source-code
-```javascript
-function setAsap(asapFn) {
-  asap = asapFn;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise._setScheduler"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>_setScheduler (scheduleFn)](#apidoc.element.es6-promise._setScheduler)
-- description and source-code
-```javascript
-function setScheduler(scheduleFn) {
-  customSchedulerFn = scheduleFn;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise.all"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>all (entries)](#apidoc.element.es6-promise.all)
-- description and source-code
-```javascript
-function all(entries) {
-  return new Enumerator(this, entries).promise;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise.polyfill"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>polyfill ()](#apidoc.element.es6-promise.polyfill)
-- description and source-code
-```javascript
-function polyfill() {
-    var local = undefined;
-
-    if (typeof global !== 'undefined') {
-        local = global;
-    } else if (typeof self !== 'undefined') {
-        local = self;
-    } else {
-        try {
-            local = Function('return this')();
-        } catch (e) {
-            throw new Error('polyfill failed because global object is unavailable in this environment');
-        }
-    }
-
-    var P = local.Promise;
-
-    if (P) {
-        var promiseToString = null;
-        try {
-            promiseToString = Object.prototype.toString.call(P.resolve());
-        } catch (e) {
-            // silently ignored
-        }
-
-        if (promiseToString === '[object Promise]' && !P.cast) {
-            return;
-        }
-    }
-
-    local.Promise = Promise;
-}
-```
-- example usage
-```shell
-...
-'''
-
-## Auto-polyfill
-
-To polyfill the global environment (either in Node or in the browser via CommonJS) use the following code snippet:
-
-'''js
-require('es6-promise').polyfill();
-'''
-
-Alternatively
-
-'''js
-require('es6-promise/auto');
-'''
-...
-```
-
-#### <a name="apidoc.element.es6-promise.race"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>race (entries)](#apidoc.element.es6-promise.race)
-- description and source-code
-```javascript
-function race(entries) {
-<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
-</span>  var Constructor = this;
-
-  if (!isArray(entries)) {
-    return new Constructor(function (_, reject) {
-      return reject(new TypeError('You must pass an array to race.'));
-    });
-  } else {
-    return new Constructor(function (resolve, reject) {
-      var length = entries.length;
-      for (var i = 0; i < length; i++) {
-        Constructor.resolve(entries[i]).then(resolve, reject);
-      }
-    });
-  }
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise.reject"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>reject (reason)](#apidoc.element.es6-promise.reject)
-- description and source-code
-```javascript
-function reject(reason) {
-<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
-</span>  var Constructor = this;
-  var promise = new Constructor(noop);
-  _reject(promise, reason);
-  return promise;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.es6-promise.resolve"></a>[function <span class="apidocSignatureSpan">es6-promise.</span>resolve (object)](#apidoc.element.es6-promise.resolve)
-- description and source-code
-```javascript
-function resolve(object) {
-<span class="apidocCodeCommentSpan">  /*jshint validthis:true */
-</span>  var Constructor = this;
-
-  if (object && typeof object === 'object' && object.constructor === Constructor) {
-    return object;
-  }
-
-  var promise = new Constructor(noop);
-  _resolve(promise, object);
-  return promise;
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
